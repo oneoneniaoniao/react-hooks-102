@@ -1,25 +1,28 @@
 import React, { useState } from "react";
 
-const App = () => {
-  const [count, setCount] = useState(0);
-  const divideWhen3xX = ()=>setCount(
-    pCount => pCount % 3 === 0? pCount/3: pCount
-  );
+const App = (props) => {
+  const [name, setName] = useState(props.name);
+  const [price, setPrice] = useState(props.price);
+  const reset = () => {
+    setPrice(props.price);
+    setName(props.name);
+  };
 
   return (
     <>
-      <div>count: {count}</div>
-      <button onClick={() => setCount(count + 1)}>+1</button>
-      <button onClick={() => setCount(count - 1)}>-1</button>
-      <br></br>
-      <button onClick={() => setCount((pCount) => pCount + 5)}>+5</button>
-      <button onClick={() => setCount((pCount) => pCount - 5)}>-5</button>
-      <br></br>
-      <button onClick={() => setCount(0)}>reset</button>
-      <button onClick={() => setCount(count * 2)}>*2</button>
-      <button onClick={divideWhen3xX}>3の倍数の時だけ3で割る</button>
+      <p>
+        {name} is {price} now.
+      </p>
+      <button onClick={() => setPrice(price + 1)}>+1</button>
+      <button onClick={() => setPrice(price - 1)}>-1</button>
+      <button onClick={reset}>reset</button>
+      <input value={name} onChange={(e) => setName(e.target.value)} />
     </>
   );
 };
 
+App.defaultProps = {
+  name: "",
+  price: 1000,
+};
 export default App;
