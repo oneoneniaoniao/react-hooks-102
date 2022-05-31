@@ -1,26 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+const App = () => {
+  const [count, setCount] = useState(0);
+  const divideWhen3xX = ()=>setCount(
+    pCount => pCount % 3 === 0? pCount/3: pCount
   );
-}
+
+  return (
+    <>
+      <div>count: {count}</div>
+      <button onClick={() => setCount(count + 1)}>+1</button>
+      <button onClick={() => setCount(count - 1)}>-1</button>
+      <br></br>
+      <button onClick={() => setCount((pCount) => pCount + 5)}>+5</button>
+      <button onClick={() => setCount((pCount) => pCount - 5)}>-5</button>
+      <br></br>
+      <button onClick={() => setCount(0)}>reset</button>
+      <button onClick={() => setCount(count * 2)}>*2</button>
+      <button onClick={divideWhen3xX}>3の倍数の時だけ3で割る</button>
+    </>
+  );
+};
 
 export default App;
