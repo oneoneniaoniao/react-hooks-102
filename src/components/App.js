@@ -19,14 +19,18 @@ const App = () => {
     setBody("");
   };
 
-  const deleteAllEvent = (e) => {
+  const deleteAllEvents = (e) => {
     e.preventDefault();
-    dispatch({
-      type: "DELETE_ALL_EVENT",
-    });
+    if(window.confirm("全てのイベントを削除しますか？")){
+      dispatch({
+        type: "DELETE_ALL_EVENTS",
+      });
+    }
   };
 
   console.log(state);
+
+  const unCreatable = title==="" || body==="";
 
   return (
     <div className="container-fluid">
@@ -50,13 +54,14 @@ const App = () => {
             onChange={(e) => setBody(e.target.value)}
           />
         </div>
-        <button className="btn btn-primary" onClick={addEvent}>
+        <button className="btn btn-primary" onClick={addEvent} disabled={unCreatable}>
           イベントを作成する
         </button>
         <button
-          onClick={deleteAllEvent}
+          onClick={deleteAllEvents}
           style={{ marginLeft: "5px" }}
           className="btn btn-danger"
+          disabled={state.length===0}
         >
           全てのイベントを削除する
         </button>
@@ -72,7 +77,7 @@ const App = () => {
           </tr>
         </thead>
         <tbody>
-          {state.map((event) => (<Event event={event} dispatch={dispatch} />))}
+          {state.map((event) => (<Event key={event.id} event={event} dispatch={dispatch} />))}
         </tbody>
       </table>
     </div>

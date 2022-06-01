@@ -3,11 +3,12 @@ import React from 'react';
 const Event = ({event, dispatch}) => {
   const handleDelete = (e) => {
     e.preventDefault();
+    if(window.confirm(`${event.title}を削除しますか？`)){
     dispatch({
       type: "DELETE_EVENT",
       id: event.id,
     });
-  };
+  };}
   return (
     <tr key={event.id}>
       <td>{event.id}</td>
