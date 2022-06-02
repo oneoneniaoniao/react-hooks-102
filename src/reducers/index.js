@@ -1,4 +1,4 @@
-const events = (state = [], action) => {
+const reducer = (state = [], action) => {
   switch (action.type) {
     case "CREATE_EVENT":
       const event = {title:action.title, body:action.body}
@@ -14,4 +14,4 @@ const events = (state = [], action) => {
   }
 };
 
-export default events;
+export default reducer;
