@@ -1,0 +1,1 @@
+export const timeCurrentIdo8601 = ()=>(new Date()).toISOString();
