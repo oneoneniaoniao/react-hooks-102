@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
-import { DELETE_EVENT } from "./actions";
+import { DELETE_EVENT, ADD_OPERATION_LOG } from "./actions";
 import AppContext from "../contexts/AppContext";
 import { timeCurrentIdo8601 } from "../utils";
-import { ADD_OPERATION_LOG } from "./actions";
 
 const Event = ({ event }) => {
   const { dispatch } = useContext(AppContext);
