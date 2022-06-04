@@ -1,13 +1,13 @@
 import {
   ADD_OPERATION_LOG,
   DELETE_OPERATION_LOGS,
-} from "../actions/operationLogs";
+} from "../components/actions";
 
 const operationLogs = (state = [], action) => {
   switch (action.type) {
     case ADD_OPERATION_LOG:
-      operationLog = {
-        description: action.desciption,
+      const operationLog = {
+        description: action.description,
         operatedAt: action.operatedAt,
       };
       return [operationLog, ...state];
